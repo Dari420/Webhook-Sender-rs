@@ -26,13 +26,14 @@ fn main() {
     stdin()
         .read_line(&mut webhook_link)
         .expect("error reading webhook link");
+    webhook_link.truncate(123);
     webhook_link = webhook_link.chars().rev().collect::<String>(); //flip link
     let mut id = String::from(&webhook_link);
     let mut token = String::from(&webhook_link);
-    id.truncate(88); //remove the domain
+    id.truncate(87); //remove the domain
     id = id.chars().rev().collect::<String>(); //reverse back to normal
     id.truncate(18); //remove the token
-    token.truncate(69); //remove everything but token
+    token.truncate(68); //remove everything but token
     token = token.chars().rev().collect::<String>(); //reverse back to normal
     let mut webhook = http::get_webhook_with_token(id.parse::<u64>().unwrap(), token.as_str())
         .expect("valid webhook");
@@ -49,6 +50,7 @@ fn main() {
             .expect("Error executing");
     }
 }
+
 /*
     pure parser
 

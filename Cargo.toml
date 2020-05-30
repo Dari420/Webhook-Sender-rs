@@ -1,5 +1,5 @@
 [package]
-name = "Webhook-Sender"
+name = "webhook_sender"
 version = "0.1.0"
 authors = ["Dari <Dari@dari.com>"]
 edition = "2018"
