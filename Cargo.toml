@@ -3,6 +3,18 @@ name = "webhook_sender"
 version = "0.1.0"
 authors = ["Dari <Dari@dari.com>"]
 edition = "2018"
+build = "build.rs"
+
+[build-dependencies]
+winres = "0.1"
+
+[package.metadata.winres]
+ProductVersion = "1.0"
+FileDescription = "Webhook sender for Discord made with ❤ by Dari"
+LegalCopyright = "Copyright © 2020 Dari."
+
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3", features = ["winuser"] }
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

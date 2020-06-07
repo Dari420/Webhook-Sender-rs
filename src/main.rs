@@ -1,12 +1,11 @@
-use std::io::{stdin, Read};
-use std::collections::HashMap;
+use std::io::stdin;
 use serenity::http;
 
 fn main() {
     let mut name = String::new();
     let mut profile_picture = String::new();
     let mut webhook_link = String::new();
-    let mut content = String::new();
+    let mut content;
     let mut i: isize = 0;
     while (name.trim_end() == "".to_string()) {
         if i > 0 {
@@ -35,7 +34,7 @@ fn main() {
     id.truncate(18); //remove the token
     token.truncate(68); //remove everything but token
     token = token.chars().rev().collect::<String>(); //reverse back to normal
-    let mut webhook = http::get_webhook_with_token(id.parse::<u64>().unwrap(), token.as_str())
+    let webhook = http::get_webhook_with_token(id.parse::<u64>().unwrap(), token.as_str())
         .expect("valid webhook");
     loop {
         println!("Enter content:");
